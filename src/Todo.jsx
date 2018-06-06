@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class Todo extends Component {
+  static propTypes = {
+    id: PropTypes.number.isRequired,
+    text: PropTypes.string.isRequired,
+    complete: PropTypes.bool.isRequired,
+    onClickCheckbox: PropTypes.func.isRequired,
+    onClickDelete: PropTypes.func.isRequired
+  };
   render() {
     const { text, complete } = this.props;
     return (

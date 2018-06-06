@@ -20,6 +20,7 @@ export default class App extends Component {
         <TodoList
           todos={this.state.todos}
           onClickCheckbox={this.completeTodo.bind(this)}
+          onClickDelete={this.deleteTodo.bind(this)}
           />
       </div>
     );
@@ -33,8 +34,10 @@ export default class App extends Component {
       }]
     }, this.clearInput())
   }
-  clearInput() {
-    this.refs.input.value = '';
+  deleteTodo(id) {
+    this.setState({
+      todos: this.state.todos.filter(todo => todo.id !== id)
+    });
   }
   completeTodo(id) {
     this.setState({
@@ -45,5 +48,8 @@ export default class App extends Component {
         return todo;
       })
     });
+  }
+  clearInput() {
+    this.refs.input.value = '';
   }
 }

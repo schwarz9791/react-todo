@@ -13,8 +13,7 @@ export default class Todo extends Component {
           {text}
         </label>
         <button
-          onClick={this.handleDelete.bind(this)}
-          disabled={!complete}>
+          onClick={this.handleDelete.bind(this)}>
           Delete
         </button>
       </li>
@@ -24,6 +23,10 @@ export default class Todo extends Component {
     this.props.onClickCheckbox(this.props.id);
   }
   handleDelete() {
-    this.props.onClickDelete(this.props.id);
+    if (!this.props.complete) {
+      if (window.confirm("This todo is not completed. Are you sure delete it?")) {
+        this.props.onClickDelete(this.props.id);
+      }
+    }
   }
 }

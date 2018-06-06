@@ -1,9 +1,23 @@
 import React, { Component } from 'react';
+import TodoList from './TodoList';
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      todos: [
+        { id: 1, text: 'aaa' },
+        { id: 2, text: 'bbb' },
+      ]
+    }
+  }
   render() {
     return (
-      <h1>Hello!</h1>
+      <div>
+        <TodoList
+          todos={this.state.todos}
+          />
+      </div>
     );
   }
 }

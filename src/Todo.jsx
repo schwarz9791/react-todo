@@ -27,6 +27,8 @@ export default class Todo extends Component {
       if (window.confirm("This todo is not completed. Are you sure delete it?")) {
         this.props.onClickDelete(this.props.id);
       }
+    } else {
+      this.props.onClickDelete(this.props.id);
     }
   }
 }
